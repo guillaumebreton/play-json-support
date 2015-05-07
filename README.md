@@ -22,7 +22,7 @@ libraryDependencies += "octamind" % "play-json-support_2.11" % "0.1.0"
 
 # Usage
 
-~~~
+~~~scala
 import akka.http.scaladsl.server._
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.directives._
