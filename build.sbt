@@ -8,6 +8,11 @@ version := "0.1.0"
 organization := "octalmind"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
+
+resolvers ++= Seq(
+    "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+)
+
 scalaVersion := "2.11.6"
 
 crossScalaVersions := Seq("2.11.6", "2.10.5")
