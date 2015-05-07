@@ -77,3 +77,30 @@ object Main extends App {
 }
 ~~~
 
+Get example :
+
+~~~
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://127.0.0.1:8080/users
+
+HTTP/1.1 200 OK
+Server: akka-http/2.3.10
+Date: Tue, 05 May 2015 10:02:34 GMT
+Content-Type: application/json
+Content-Length: 46
+
+{"id":1,"firstname":"dark","lastname":"vador"}%
+~~~
+
+Post example
+
+~~~
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" --data "{\"firstname\":\"luck\", \"lastname\":\"skywalker\"}" http://127.0.0.1:8080/users
+
+HTTP/1.1 200 OK
+Server: akka-http/2.3.10
+Date: Tue, 05 May 2015 10:06:11 GMT
+Content-Type: application/json
+Content-Length: 50
+
+{"id":1,"firstname":"luck","lastname":"skywalker"}%
+~~~
