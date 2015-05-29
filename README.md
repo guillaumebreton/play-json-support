@@ -6,9 +6,26 @@ Add Akka http play json support.
 
 Currently supporting
 
-- akka-http : RC1
-- play-json : 2.3.8
+## Version 0.1.0
 
+
+<table>
+  <th>
+    <td>Version</td>
+    <td>Akka-http version</td>
+    <td>Play-json version</td>
+  </th>
+  <tr>
+    <td>0.2.0</td>
+    <td>1.0-RC3</td>
+    <td>2.4.0</td>
+  </tr>
+  <tr>
+    <td>0.1.0</td>
+    <td>1.0-RC1</td>
+    <td>2.3.8</td>
+  </tr>
+</table>
 
 # Dependency
 
@@ -16,7 +33,7 @@ Add the following dependency and the bintray host
 
 ~~~
 resolvers += "octalmind maven" at "http://dl.bintray.com/guillaumebreton/maven"
-libraryDependencies += "octamind" % "play-json-support_2.11" % "0.1.0"
+libraryDependencies += "octamind" % "play-json-support_2.11" % "0.2.0"
 
 ~~~
 

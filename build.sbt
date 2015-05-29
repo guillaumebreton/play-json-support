@@ -3,7 +3,7 @@ import bintray.Keys._
 
 name := "play-json-support"
 
-version := "0.1.0"
+version := "0.2.0"
 
 organization := "octalmind"
 
@@ -18,11 +18,11 @@ scalaVersion := "2.11.6"
 crossScalaVersions := Seq("2.11.6", "2.10.5")
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % "2.3.9",
-  "com.typesafe.akka" %% "akka-http-core-experimental" % "1.0-RC1",
-  "com.typesafe.akka" %% "akka-http-scala-experimental" % "1.0-RC1",
-  "com.typesafe.play" %% "play-json" % "2.3.8",
-  "com.typesafe.akka" %% "akka-http-testkit-scala-experimental" % "1.0-RC1" % "test",
+  "com.typesafe.akka" %% "akka-actor" % "2.3.10",
+  "com.typesafe.akka" %% "akka-http-experimental" % "1.0-RC3",
+  "com.typesafe.akka" %% "akka-http-core-experimental" % "1.0-RC3",
+  "com.typesafe.akka" %% "akka-http-testkit-experimental" % "1.0-RC3",
+  "com.typesafe.play" %% "play-json" % "2.4.0",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test"
 )
 
