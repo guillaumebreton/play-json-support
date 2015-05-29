@@ -4,9 +4,7 @@
 
 Add Akka http play json support.
 
-Currently supporting
-
-## Version 0.1.0
+## Versions
 
 
 <table>
