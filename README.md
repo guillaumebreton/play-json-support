@@ -10,11 +10,13 @@ Currently supporting
 
 
 <table>
-  <th>
-    <td>Version</td>
-    <td>Akka-http version</td>
-    <td>Play-json version</td>
-  </th>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Akka-http version</th>
+      <th>Play-json version</th>
+    </tr>
+  </thead>
   <tr>
     <td>0.2.0</td>
     <td>1.0-RC3</td>
