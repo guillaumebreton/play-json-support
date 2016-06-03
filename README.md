@@ -33,7 +33,7 @@ Add the following dependency and the bintray host
 
 ~~~
 resolvers += "octalmind maven" at "http://dl.bintray.com/guillaumebreton/maven"
-libraryDependencies += "octamind" % "play-json-support_2.11" % "0.2.0"
+libraryDependencies += "octalmind" % "play-json-support_2.11" % "0.2.0"
 
 ~~~
 
