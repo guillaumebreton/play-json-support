@@ -1,9 +1,9 @@
 package octalmind.playjson
 
-import akka.http.scaladsl.marshalling.{Marshaller, ToEntityMarshaller}
+import akka.http.scaladsl.marshalling.{ Marshaller, ToEntityMarshaller }
 import akka.http.scaladsl.model.HttpCharsets
 import akka.http.scaladsl.model.MediaTypes.`application/json`
-import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, Unmarshaller}
+import akka.http.scaladsl.unmarshalling.{ FromEntityUnmarshaller, Unmarshaller }
 import akka.stream.Materializer
 import play.api.libs.json._
 
@@ -11,8 +11,8 @@ import scala.concurrent.ExecutionContext
 import scala.language.implicitConversions
 
 /**
-  * A trait providing automatic to and from JSON marshalling/unmarshalling using an in-scope *play-json* protocol.
-  */
+ * A trait providing automatic to and from JSON marshalling/unmarshalling using an in-scope *play-json* protocol.
+ */
 trait PlayJsonSupport {
 
   type Printer = (JsValue ⇒ String)
@@ -20,7 +20,7 @@ trait PlayJsonSupport {
   def read[T](jsValue: JsValue)(implicit reads: Reads[T]): T = {
     reads.reads(jsValue) match {
       case s: JsSuccess[T] ⇒ s.get
-      case e: JsError ⇒ throw JsResultException(e.errors)
+      case e: JsError      ⇒ throw JsResultException(e.errors)
     }
   }
 
