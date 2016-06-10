@@ -13,17 +13,14 @@ resolvers ++= Seq(
     "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 )
 
-scalaVersion := "2.11.6"
-
-crossScalaVersions := Seq("2.11.6", "2.10.5")
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % "2.3.10",
-  "com.typesafe.akka" %% "akka-http-experimental" % "1.0-RC3",
-  "com.typesafe.akka" %% "akka-http-core-experimental" % "1.0-RC3",
-  "com.typesafe.akka" %% "akka-http-testkit-experimental" % "1.0-RC3",
-  "com.typesafe.play" %% "play-json" % "2.4.0",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test"
+  "com.typesafe.akka" %% "akka-actor" % "2.4.7",
+  "com.typesafe.akka" %% "akka-http-core" % "2.4.7",
+  "com.typesafe.akka" %% "akka-http-testkit" % "2.4.7",
+  "com.typesafe.play" %% "play-json" % "2.5.0",
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test"
 )
 
 scalacOptions ++= Seq(

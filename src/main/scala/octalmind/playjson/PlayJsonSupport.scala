@@ -1,15 +1,14 @@
 package octalmind.playjson
 
-import scala.language.implicitConversions
-import scala.concurrent.ExecutionContext
-import akka.stream.FlowMaterializer
-import akka.http.scaladsl.marshalling.{ ToEntityMarshaller, Marshaller }
-import akka.http.scaladsl.unmarshalling.{ FromEntityUnmarshaller, Unmarshaller }
-import akka.http.scaladsl.model.{ ContentTypes, HttpCharsets }
+import akka.http.scaladsl.marshalling.{ Marshaller, ToEntityMarshaller }
+import akka.http.scaladsl.model.HttpCharsets
 import akka.http.scaladsl.model.MediaTypes.`application/json`
+import akka.http.scaladsl.unmarshalling.{ FromEntityUnmarshaller, Unmarshaller }
+import akka.stream.Materializer
 import play.api.libs.json._
-import akka.http.scaladsl.model.StatusCodes._
-import scala.util.control.NoStackTrace
+
+import scala.concurrent.ExecutionContext
+import scala.language.implicitConversions
 
 /**
  * A trait providing automatic to and from JSON marshalling/unmarshalling using an in-scope *play-json* protocol.
@@ -25,11 +24,13 @@ trait PlayJsonSupport {
     }
   }
 
-  implicit def playJsonUnmarshallerConverter[T](reads: Reads[T])(implicit ec: ExecutionContext, mat: FlowMaterializer): FromEntityUnmarshaller[T] =
+  implicit def playJsonUnmarshallerConverter[T](reads: Reads[T])(implicit ec: ExecutionContext, mat: Materializer): FromEntityUnmarshaller[T] =
     playJsonUnmarshaller(reads, ec, mat)
-  implicit def playJsonUnmarshaller[T](implicit reads: Reads[T], ec: ExecutionContext, mat: FlowMaterializer): FromEntityUnmarshaller[T] =
+
+  implicit def playJsonUnmarshaller[T](implicit reads: Reads[T], ec: ExecutionContext, mat: Materializer): FromEntityUnmarshaller[T] =
     playJsValueUnmarshaller.map(read[T])
-  implicit def playJsValueUnmarshaller(implicit ec: ExecutionContext, mat: FlowMaterializer): FromEntityUnmarshaller[JsValue] =
+
+  implicit def playJsValueUnmarshaller(implicit ec: ExecutionContext, mat: Materializer): FromEntityUnmarshaller[JsValue] =
     Unmarshaller.byteStringUnmarshaller.forContentTypes(`application/json`).mapWithCharset { (data, charset) ⇒
       if (charset == HttpCharsets.`UTF-8`) Json.parse(data.toArray)
       else Json.parse(data.decodeString(charset.nioCharset.name)) // FIXME: identify charset by instance, not by name!
@@ -37,9 +38,12 @@ trait PlayJsonSupport {
 
   implicit def playJsonMarshallerConverter[T](writes: Writes[T])(implicit printer: Printer = Json.prettyPrint, ec: ExecutionContext): ToEntityMarshaller[T] =
     playJsonMarshaller[T](writes, printer, ec)
+
   implicit def playJsonMarshaller[T](implicit writes: Writes[T], printer: Printer = Json.prettyPrint, ec: ExecutionContext): ToEntityMarshaller[T] =
     playJsValueMarshaller[T].compose(writes.writes)
+
   implicit def playJsValueMarshaller[T](implicit writes: Writes[T], printer: Printer = Json.prettyPrint, ec: ExecutionContext): ToEntityMarshaller[JsValue] =
-    Marshaller.StringMarshaller.wrap(ContentTypes.`application/json`)(printer)
+    Marshaller.StringMarshaller.wrap(`application/json`)(printer)
 }
+
 object PlayJsonSupport extends PlayJsonSupport
