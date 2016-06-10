@@ -1,6 +1,6 @@
 # play-json-support
 
-[![Circle CI](https://circleci.com/gh/guillaumebreton/play-json-support/tree/master.svg?style=svg)](https://circleci.com/gh/guillaumebreton/play-json-support/tree/master)
+[![CircleCI](https://circleci.com/gh/guillaumebreton/play-json-support.svg?style=svg)](https://circleci.com/gh/guillaumebreton/play-json-support)
 
 Add Akka http play json support.
 
